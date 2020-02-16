@@ -1,0 +1,3 @@
+# don't forget to ignore node_modules before run/installation container
+node_modules
+.git
