@@ -8,11 +8,13 @@ RUN mkdir /home/node/src
 
 WORKDIR /home/node/src
 
-# copy and change owner as node
-COPY --chown=node:node . .
+# break it into two COPY instructions, to avoid doing a full npm i when file changes
+COPY --chown=node:node package.json package-lock.json ./
 
 # same as npm i but looking at package-lock.json file
 RUN npm ci
+
+COPY --chown=node:node . .
 
 EXPOSE 3000
 
