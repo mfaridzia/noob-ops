@@ -9,6 +9,7 @@ RUN mkdir /home/node/src
 WORKDIR /home/node/src
 
 # break it into two COPY instructions, to avoid doing a full npm i when file changes
+# https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 COPY --chown=node:node package.json package-lock.json ./
 
 # same as npm i but looking at package-lock.json file
