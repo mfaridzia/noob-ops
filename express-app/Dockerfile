@@ -1,3 +1,4 @@
+# FROM node:alpine
 FROM node:12-stretch
 
 # create user
