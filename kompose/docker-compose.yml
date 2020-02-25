@@ -1,15 +1,16 @@
 version: "3"
 services: 
   web:
-    build: .
+    image: muhfaridzia/simple-node-app
     ports: 
       - "3000:3000"
-    volumes: 
-      - .:/home/node/code
-      - /home/node/code/node_modules
     links: 
       - db
+    labels: 
+      kompose.service.type: LoadBalancer # for kubernetes
     environment: 
       MONGODB_URL: mongodb://db:27017
   db:
     image: mongo:3
+    ports:
+      - "27017" # expose the port
